@@ -1,0 +1,4 @@
+
+# Ignore keystore and key properties
+key.properties
+ramastore.keystore
