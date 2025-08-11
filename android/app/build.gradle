@@ -1,10 +1,10 @@
 android {
-    namespace "com.parsa.rama" // ← این با پکیج شما یکی شده
+    namespace "com.parsa.rama" // ← باید با پکیج MainActivity و AndroidManifest هماهنگ باشد
     compileSdkVersion 34
 
     signingConfigs {
         release {
-            storeFile file(keystoreProperties['storeFile'])
+            storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
             storePassword keystoreProperties['storePassword']
             keyAlias keystoreProperties['keyAlias']
             keyPassword keystoreProperties['keyPassword']
@@ -12,7 +12,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.parsa.rama" // ← با مسیر جدید MainActivity هماهنگ شده
+        applicationId "com.parsa.rama" // ← باید با مسیر پکیج هماهنگ باشد
         minSdkVersion 21
         targetSdkVersion 34
         versionCode 1
@@ -29,6 +29,8 @@ android {
         }
         debug {
             debuggable true
+            minifyEnabled false
+            shrinkResources false
         }
     }
 
@@ -45,4 +47,3 @@ android {
         viewBinding true
     }
 }
-
